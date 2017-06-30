@@ -1,0 +1,8 @@
+
+<div class="container"> 
+
+  <app-fleur-new (createNewFleurEvent)="createFleur($event)"></app-fleur-new>
+
+  <app-fleur-list [fleurs]="fleurs" (destroyFleurEvent)="deleteFleur($event)" (updateFleurEvent)="updateFleur($event)"></app-fleur-list>  
+  
+</div>

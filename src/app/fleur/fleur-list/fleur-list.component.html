@@ -1,0 +1,40 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">
+      <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Liste des fleurs
+    </h3>
+  </div>
+  <div class="panel-body">
+    <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Nom</th>
+            <th>Couleur</th>
+            <th>Prix</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="info" *ngFor="let fleur of fleurs">
+            <td>{{fleur.id}}</td>
+            <td>{{fleur.nom}}</td>
+            <td>{{fleur.couleur}}</td>
+            <td>{{fleur.prix}} &#36;</td>
+            <td>
+              <a href="#fleurmodal_{{fleur.id}}" class="btn btn-primary btn-sm" data-toggle="modal" role="button">
+                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>  Editer
+              </a>
+              <app-fleur-edit [fleur]="fleur" (updateFleurEvent)="updateFleur($event)"></app-fleur-edit>
+            </td>
+            <td>
+              <button type="button" (click)="deleteFleur(fleur)" class="btn btn-danger btn-sm">
+                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>  Supprimer
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table> 
+  </div>
+</div>

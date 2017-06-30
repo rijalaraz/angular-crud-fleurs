@@ -1,0 +1,45 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Ajout d'une fleur
+      </h3>
+    </div>
+    <div class="panel-body">
+        <form class="form-horizontal" [formGroup]="fleurForm" (submit)="createFleur()">
+          <fieldset>
+            <div class="form-group">
+              <label for="inputNom" class="col-lg-2 control-label">Nom</label>
+              <div class="col-lg-5">
+                <input [(ngModel)]="newFleur.nom" class="form-control" id="inputNom" placeholder="Nom" type="text" name="nom" formControlName="nom">
+                <div *ngIf="formErrors.nom" class="alert alert-danger">{{ formErrors.nom }}</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="selectCouleur" class="col-lg-2 control-label">Couleur</label>
+              <div class="col-lg-5">
+                <select [(ngModel)]="newFleur.couleur" class="form-control" id="selectCouleur" name="couleur" formControlName="couleur">
+                  <option value="">---</option>
+                  <option value="noir">Noir</option>
+                  <option value="blanc">Blanc</option>
+                </select>
+                <div *ngIf="formErrors.couleur" class="alert alert-danger">{{ formErrors.couleur }}</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputPrix" class="col-lg-2 control-label">Prix</label>
+              <div class="col-lg-5">
+                <input [(ngModel)]="newFleur.prix" class="form-control" id="inputPrix" placeholder="Prix" type="number" name="prix" formControlName="prix">
+                <div *ngIf="formErrors.prix" class="alert alert-danger">{{ formErrors.prix }}</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-lg-5 col-lg-offset-2">
+                <button type="submit" class="btn btn-success" [disabled]="!fleurForm.valid">
+                  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Ajouter
+                </button>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+    </div>
+  </div>
