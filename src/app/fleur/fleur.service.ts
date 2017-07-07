@@ -36,7 +36,10 @@ export class FleurService {
     return this.http
       .post(this.fleursUrl, JSON.stringify(fleur), { headers: this.headers })
       .toPromise()
-      .then(res => res.json().data as Fleur)
+      .then(res => {
+        fleur.id = res.json().data.insertId;
+        return fleur
+      })
       .catch(this.handleError);
   }
 
