@@ -5,7 +5,7 @@ import { FleurService } from './fleur.service';
 import { FleurNewComponent } from './fleur-new/fleur-new.component';
 import $ from 'jquery';
 
-
+/*
 const FLEURS: Fleur[] = [
   { id: 1, nom: 'Rose', couleur: 'blanc', prix: 15 },
   { id: 2, nom: 'Tulipe', couleur: 'noir', prix: 10 },
@@ -13,7 +13,7 @@ const FLEURS: Fleur[] = [
   { id: 4, nom: 'Fuchsia', couleur: 'noir', prix: 13 },
   { id: 5, nom: 'Lobelie', couleur: 'blanc', prix: 20 }
 ];
-
+*/
 
 @Component({
   selector: 'app-fleur',
