@@ -5,6 +5,11 @@ const pool  = mysql.createPool({
     user     : 'lalaina',
     password : 'lalainalalaina',
     database : 'lalaina'
+
+    //host     : 'localhost',
+    //user     : 'root',
+    //password : '',
+    //database : 'test'
 });
 
 module.exports = pool;

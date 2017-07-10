@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Fleur } from './fleur';
 import { FleurService } from './fleur.service';
-import { FormGroup } from '@angular/forms';
+import { FleurNewComponent } from './fleur-new/fleur-new.component';
 
 
 const FLEURS: Fleur[] = [
@@ -32,14 +32,19 @@ export class FleurComponent implements OnInit {
     // this.fleurs = FLEURS;
   }
 
-  createFleur(fleurForm: FormGroup): void {
+  createFleur(fleurNew: FleurNewComponent): void {
     
     this.fleurService
-      .createFleur(fleurForm.value)
+      .createFleur(fleurNew.fleurForm.value)
       .then(fleur => {
         this.fleurs.push(fleur);
-        fleurForm.reset();
-      });
+        fleurNew.fleurForm.reset();
+      })
+      .catch(erreurs => {
+        erreurs.json().forEach(function(error,index) { 
+          fleurNew.formErrors[error.field] = error.message;
+        })  
+      })
     
     /*
     if( this.fleurs.length > 0 ){

@@ -87,7 +87,7 @@ export class FleurNewComponent implements OnInit {
 
   createFleur(){
     this.submitted = true;
-    this.createNewFleurEvent.emit(this.fleurForm);
+    this.createNewFleurEvent.emit(this);
   }
 
 }
