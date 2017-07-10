@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Fleur } from '../fleur';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { MaxnumberlengthValidator } from '../../app-directives/maxnumberlength-validator.directive';
-import $ from 'jquery';
+
 
 
 @Component({
@@ -89,8 +89,11 @@ export class FleurEditComponent implements OnInit {
   }
 
   updateFleur(){
-    $('.modal-backdrop').remove();
-    this.updateFleurEvent.emit({ original: this.fleur, edited: this.fleurEdit });
+    this.updateFleurEvent.emit({ 
+      fleurEditComponent: this, 
+      original: this.fleur, 
+      edited: this.fleurEdit 
+    });
   }
 
   cancelUpdate(){

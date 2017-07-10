@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Fleur } from './fleur';
 import { FleurService } from './fleur.service';
 import { FleurNewComponent } from './fleur-new/fleur-new.component';
+import $ from 'jquery';
 
 
 const FLEURS: Fleur[] = [
@@ -44,7 +45,7 @@ export class FleurComponent implements OnInit {
         erreurs.json().forEach(function(error,index) { 
           fleurNew.formErrors[error.field] = error.message;
         })  
-      })
+      });
     
     /*
     if( this.fleurs.length > 0 ){
@@ -71,9 +72,16 @@ export class FleurComponent implements OnInit {
     this.fleurService
       .updateFleur(fleurs.edited)
       .then(() => {
+        $('.modal-backdrop').remove();
         const i = this.fleurs.indexOf(fleurs.original);
         this.fleurs[i] = fleurs.edited;
+      })
+      .catch(erreurs => {
+        erreurs.json().forEach(function(error,index) { 
+          fleurs.fleurEditComponent.formErrors[error.field] = error.message;
+        })  
       });
+
     /*
     const i = this.fleurs.indexOf(fleurs.original);
     this.fleurs[i] = fleurs.edited;
